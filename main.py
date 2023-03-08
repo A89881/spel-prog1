@@ -29,10 +29,11 @@ class StartScreen():
     if len(self.name) > 10:
       self.name = input(str("What is your name (in the game)?: "))  
 
-    def StartText(self):
-      print("Your Character: "self.name,"age: ",self.age,)
-    
+  def info(self):
+    print(f"Your Character; Name: {self.name} Age: {self.age} Moralallignment: {self.moralAllignment} Karma:{str(sum(karma))} ")
 
+  def Text(self):
+    print(f"\n Hello {self.name}! You have a class in 15min")
   
 s = StartScreen(0, 0, 0)
 while Start == True:
