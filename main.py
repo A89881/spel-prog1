@@ -1,5 +1,7 @@
 karma = []
 allignments = ["good", "bad", "evil"]
+meters = 0
+time = 0
 Start = True
 
 
@@ -24,13 +26,14 @@ class StartScreen():
 
     if self.age > 99:
       self.age = input(int("How old are you (in the game)?: "))
-    
     if len(self.name) > 10:
       self.name = input(str("What is your name (in the game)?: "))  
 
+    def StartText(self):
+      print("Your Character: "self.name,"age: ",self.age,)
+    
+
   
 s = StartScreen(0, 0, 0)
-
-class Game():
-  
+while Start == True:
   pass
