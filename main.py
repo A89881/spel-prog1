@@ -24,12 +24,14 @@ def StartMenu():
 
   if StartScreen.age > 99:
     StartScreen.age = input(int("How old are you (in the game)?: "))
+    return False
   if len(name) > 10:
     name = input(str("What is your name (in the game)?: "))  
+    return False
   
 s = StartScreen(0, 0, 0)
 
 while game_bool == True:
-  StartMenu()
+  s.StartMenu()
   if s.StartMenu() == False:
     game_bool = False
