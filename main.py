@@ -1,6 +1,6 @@
 karma = []
 allignments = ["good", "bad", "evil"]
-game_bool = True
+Start = True
 
 
 class StartScreen():
@@ -9,29 +9,28 @@ class StartScreen():
     self.age = age
     self.moralAllignment = moralAllignment
 
-def StartMenu():
-  StartScreen.age = int(input("How old are you (in the game)?: "))
-  StartScreen.name = str(input("What is your name (in the game)?: "))
-  print(allignments)
-  StartScreen.moralAllignment = str(input("What allginment do you want? (choose from the above): ")).lower()
+  def StartMenu(self):
+    self.age = int(input("How old are you (in the game)?: "))
+    self.name = str(input("What is your name (in the game)?: "))
+    print(allignments)
+    self.moralAllignment = str(input("What allginment do you want? (choose from the above): ")).lower()
 
-  if StartScreen.moralAllignment == allignments[0]:
-    karma.append(10)
-  if StartScreen.moralAllignment == allignments[1]:
-    karma.append(0)
-  if StartScreen.moralAllignment == allignments[2]:
-    karma.append(-10)
+    if self.moralAllignment == allignments[0]:
+      karma.append(10)
+    if self.moralAllignment == allignments[1]:
+      karma.append(0)
+    if self.moralAllignment == allignments[2]:
+      karma.append(-10)
 
-  if StartScreen.age > 99:
-    StartScreen.age = input(int("How old are you (in the game)?: "))
-    return False
-  if len(name) > 10:
-    name = input(str("What is your name (in the game)?: "))  
-    return False
+    if self.age > 99:
+      self.age = input(int("How old are you (in the game)?: "))
+    
+    if len(self.name) > 10:
+      self.name = input(str("What is your name (in the game)?: "))  
+
   
 s = StartScreen(0, 0, 0)
 
-while game_bool == True:
-  s.StartMenu()
-  if s.StartMenu() == False:
-    game_bool = False
+class Game():
+  
+  pass
