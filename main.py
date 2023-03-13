@@ -33,8 +33,10 @@ class StartScreen():
     print(f"Your Character; Name: {self.name} Age: {self.age} Moralallignment: {self.moralAllignment} Karma:{str(sum(karma))} ")
 
   def Text(self):
-    print(f"\n Hello {self.name}! You have a class in 15min")
+    print(f"\n Hello {self.name}! You have a class in 15min, come to class in time or you will lose the game")
   
 s = StartScreen(0, 0, 0)
+s.StartMenu()
+s.Text()
 while Start == True:
   pass
