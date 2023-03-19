@@ -76,9 +76,9 @@ def checkFinish():
    # om du har gått tillräckligt långt vinner du
    elif meters >= 25:
       print("\n You see the school slowly appearing in the horizon. You made it!")
-      time.sleep(2)
+      time.sleep(3)
       print("You start running as fast as you can. It feels like hours pass by, but somehow, you walk through the door just in time for your first class.")
-      time.sleep(2)
+      time.sleep(3)
       print("Congratulations " + s.name + "; you made it!")
 
       Start = False
@@ -93,7 +93,7 @@ while Start == True:
   print("You put on clothes and run down to the kitchen.")
   time.sleep(2)
   print("\n Right when you're about to leave the house, you see a sandwich laying on the table. You hear your stomach growling as you're thinking about what you should do.")
-  time.sleep(2)
+  time.sleep(4)
 
   # val
   choice = True
@@ -104,9 +104,9 @@ while Start == True:
       # om du svarar ja
       if choiceAnswer.lower() == "yes":
           print("\n You walk up to the table as fast as you can. As you hear your stomach rumbling, you feel like you made the right decision.")
-          time.sleep(2)
+          time.sleep(4)
           print("You grab the sandwich and eat it slowly, while enjoying every single bite.")
-          time.sleep(2)
+          time.sleep(3)
 
           # uppdaterar värdena
           minutes += 2
@@ -135,9 +135,9 @@ while Start == True:
 
   # story
   print("\n The sun is shining. You slowly walk down the street, when you see a bus driving on the street in front of you.")
-  time.sleep(2)
+  time.sleep(4)
   print("You suddenly stop as you're watching the bus. Can you make it? Is it worth it?")
-  time.sleep(2)
+  time.sleep(3)
 
   # val
   choice = True
@@ -153,7 +153,7 @@ while Start == True:
           print("You get closer to the bus stop. The bus stops and people start to go aboard.")
           time.sleep(2)
           print("Your first day depends on this moment. While thinking that, you speed up.")
-          time.sleep(2)
+          time.sleep(3)
 
          # kontrollerar om du har tillräckligt mycket energi
          # har du tillräckligt lyckas du
@@ -350,6 +350,7 @@ while Start == True:
      break
   
   # story
+  time.sleep(2)
   print("\n You start to feel hopeless. How are you going to make it there in time?")
   time.sleep(2)
   print("You continue to walk for a bit, until you see a sign.")
