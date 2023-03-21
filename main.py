@@ -3,7 +3,6 @@
 import time
 
 # definiera globala variabler
-global minutes
 global meters
 global Start
 
@@ -61,11 +60,11 @@ class StartScreen():
           check = False
         
         elif self.level == difficulty[1]:
-          meters =  0
+          meters =  2
           check = False
       
         elif self.level == difficulty[2]:
-          meters = -5 
+          meters = 0
           check = False
 
         # om man inte valt en svårighetsgrad körs loopen igen
