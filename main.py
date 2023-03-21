@@ -1,56 +1,107 @@
+# TEXTBASERAT SPEL AV AGNES OCH ABHAY
+
 import time
-#karma = []
-#allignments = ["good", "bad", "evil"]
+
+# definiera globala variabler
+global minutes
+global meters
+global Start
+
+# definiera värdena på variablerna
+difficulty = ["good", "bad", "evil"]
 minutes = 0
 meters = 0
 energy = 5
 choice = False
 bus = False
-global Start
 Start = True
 
 class StartScreen():
-  def __init__(self, name, age, moralAllignment):
+  #initializar variablerna som namn and ålder
+  def __init__(self, name, age):
     self.name = name
     self.age = age
-    self.moralAllignment = moralAllignment
 
+  #Metod att skapa startmenyen (bakgrunds info, och "skapa" karaktär)
   def StartMenu(self):
-    self.name = str(input("What is your name (in the game)?: "))
+    global minutes
+    global meters
+    
+    # startar en loop för att skapa karaktären
+    createCharacter = True
+    while createCharacter == True:
 
-    ageCheck = True
-    while ageCheck == True:
-      try:
-        self.age = int(input("How old are you (in the game)?: "))
-        ageCheck = False
+      # frågar vad man heter
+      self.name = str(input("What is your name (in the game)?: "))
 
-      except:
-        print("Please choose a number.")
+      check = True
+      while check == True:
 
-    #print(allignments)
-    #self.moralAllignment = str(input("What allginment do you want? (choose from the above): ")).lower()
+        # testar om man väljer ett nummer
+        try:
+          self.age = int(input("How old are you (in the game)?: "))
+          check = False
 
-    #if self.moralAllignment == allignments[0]:
-      #karma.append(10)
-    #if self.moralAllignment == allignments[1]:
-      #karma.append(0)
-    #if self.moralAllignment == allignments[2]:
-      #karma.append(-10)
+        # om det inte fungerar körs loopen om
+        except:
+          print("Please choose a number.")
 
-    #if self.age > 99:
-     # self.age = input(int("How old are you (in the game)?: "))
-    #if len(self.name) > 10:
-     # self.name = input(str("What is your name (in the game)?: "))  
+      check = True
+      while check == True:
 
-  def info(self):
-    print(f"Your Character; Name: {self.name} Age: {self.age} Moralallignment: {self.moralAllignment}  ")
-    #Karma:{str(sum(karma))}
+        # skriver ut svårighetsgraderna
+        print(difficulty)
+
+        # låter en välja svårighetsgrad
+        self.level = str(input("What difficulty do you want? (choose from the above): ")).lower()
+
+        # beroende på vilken svårighetsgrad man väljer ändras startvärdena
+        if self.level == difficulty[0]:
+          meters = 5
+          check = False
+        
+        elif self.level == difficulty[1]:
+          meters =  0
+          check = False
+      
+        elif self.level == difficulty[2]:
+          meters = -5 
+          check = False
+
+        # om man inte valt en svårighetsgrad körs loopen igen
+        else:
+          print("Please choose one of the options.")
+          time.sleep(1)
+
+      check = True
+      while check == True:
+
+        # skriver ut informationen om ens karaktär
+        print(f"Your Character; \nName: {self.name} \nAge: {self.age} \nDifficulty: {self.level}")
+        time.sleep(1)
+
+        # frågar om man är nöjd med karaktären
+        value = str(input("Are you happy with your character?: \n [Yes] or [No] \n")).lower()
+
+        # om man svarar ja avbryts checken och loopen
+        if value == "yes":
+          createCharacter = False
+          check = False
+        
+        # om man svarar nej avslutas checken och loopen körs om
+        elif value == "no":
+          print("Ok, let's make a new character! \n")
+          check = False
+
+        # om man inte svarar med ett av alternativen ställs frågan igen
+        else:
+          print("Please choose yes or no.")
 
   def Text(self):
     print(f"\nHello {self.name}! You have a class in 15min, come to class in time or you will lose the game")
 
 # definerar spelaren 
-s = StartScreen(0, 0, 0)
+s = StartScreen(0, 0)
 
 # visar menyn
 s.StartMenu()
@@ -69,7 +120,7 @@ def checkFinish():
       time.sleep(1)
       print("Your class starts now.")
       time.sleep(2)
-      print("I'm sorry " + s.name + "; you didn't make it.")
+      print(f"I'm sorry {s.name} ; you didn't make it.")
 
       Start = False
    
@@ -235,7 +286,7 @@ while Start == True:
 
           # uppdaterar värden
           minutes += 4
-          meters += 10
+          meters += 7
           bus = False
           
           # avslutar valet
@@ -503,7 +554,9 @@ while Start == True:
     # om man väljer att fortsätta i samma takt
     elif choiceAnswer.lower() == "continue":
        print("It's not worth it, you think as you continue to walk in your usual pace.")
+       time.sleep(2)
        print("You will get there in time, you assure yourself.")
+       time.sleep(2)
     
        # uppdaterar värdena
        minutes += 4
@@ -518,5 +571,10 @@ while Start == True:
       time.sleep(1)
   
   # om spelet är slut avslutas while-loopen
+  if checkFinish() == False:
+     break
+  
+  # om man varken har vunnit eller förlorat, sätts antalet minuter till max så att man förlorar spelet
+  minutes = 15
   if checkFinish() == False:
      break
